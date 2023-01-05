@@ -1,4 +1,6 @@
-const styleLogin = {
+import {StyleSheet} from 'react-native';
+
+const styleLogin = StyleSheet.create({
   form: {
     width: '100%',
     marginTop: '20%',
@@ -17,10 +19,13 @@ const styleLogin = {
     borderWidth: 0.5,
     borderColor: 'black',
     borderRadius: 15,
-    textAlign: 'right',
+    textAlign: 'left',
     flexGrow: 1,
+    color: 'black',
     paddingHorizontal: 10,
     fontSize: 18,
+    overflow: 'scroll',
+    maxWidth: '70%',
   },
   label: {
     width: '30%',
@@ -29,8 +34,8 @@ const styleLogin = {
   },
   icon: {
     position: 'absolute',
-    right: 20,
-    bottom: -40,
+    right: 40,
+    bottom: 16,
   },
   buttonGroup: {
     width: '100%',
@@ -40,5 +45,5 @@ const styleLogin = {
     flexDirection: 'column',
     justifyContent: 'center',
   },
-};
+});
 export default styleLogin;

@@ -1,8 +1,11 @@
-const style = {
+import { StyleSheet } from "react-native";
+
+const style = StyleSheet.create({
   container: {
     width:"100%",
     height:"100%",
-    backgroundColor:"white"
+    backgroundColor:"white",
+    flexDirection:"column",
   },
   header: {
     flexDirection: 'row',
@@ -13,7 +16,7 @@ const style = {
     width: "100%",
   },
   button: {
-    borderWidth: 0,
+    borderWidth: 0.5,
     color: 'white',
     margin: 5,
     borderRadius: 0,
@@ -22,7 +25,8 @@ const style = {
   text:{
     color: "black",
     fontSize:20,
-    textAlign:"center"
+    textAlign:"center",
+    marginHorizontal:10
   }
-};
+});
 export default style;

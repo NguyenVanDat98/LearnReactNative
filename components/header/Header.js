@@ -6,9 +6,10 @@ import {useRoute} from '@react-navigation/native';
 
 const ButtonLink = ({title, onPress}) => {
   return (
-    <Button onPress={onPress} size="large" style={styles.button}>
-      <Text style={{...styles.text}}>{title}</Text>
-    </Button>
+    // <Button onPress={onPress} size="large" style={styles.button}>
+    //   <Text style={{...styles.text}}>{title}</Text>
+    // </Button>
+    <Text onPress={onPress} style={{...styles.text, flex:1,textAlignVertical :'center' , borderWidth : 1}} >{title}</Text>
   );
 };
 
@@ -17,10 +18,10 @@ export default function Header({navi}) {
   const onPress = e => {
     switch (e.title) {
       case 'login':
-        navi.navigate('LoginPage', {id: 'home'});
+        navi.navigate('Login');
         break;
       case 'burger':
-        navi.navigate('HomePage');
+        navi.navigate('Home');
         break;
       default:
         console.log(e.title);

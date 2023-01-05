@@ -1,23 +1,30 @@
-
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { useRoute } from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import ControlNavi from '../../components/header/common/ControlNavi';
-import Header from '../../components/header/Header';
+import {StyleSheet} from 'react-native';
+import Btnlogout from '../../components/Btnlogout';
 import style from '../../style/header';
-import RootPage from './RootPage';
+import Burger from './Burger';
+import Checkout from './Checkout';
 
-export default function HomePage({navigation}) {
+const Stack = createNativeStackNavigator();
+const Tabs = createBottomTabNavigator();
 
+export default function HomePage({route,navigation}) {
+  const router= useRoute()
   return (
-    <RootPage>
-      <Header navi={navigation} />
-      <View style={{...styles.container}}>
-        <View style={{flexDirection: 'row', justifyContent:"flex-start", backgroundColor: 'white'}}>
-          <ControlNavi navi ={navigation}/>
-          <Text style={{...styles.text}}>home</Text>
-        </View>
-      </View>
-    </RootPage>
+    <Stack.Navigator
+    initialRouteName='Burger'
+      screenOptions={{
+        
+        headerRight: props => {
+          return <Btnlogout {...props} parentRoute={router.name} />;
+        },
+      }}>
+      <Stack.Screen name="Burger" component={Burger} />
+      <Stack.Screen name="Checkout" component={Checkout} />
+    </Stack.Navigator>
   );
 }
 

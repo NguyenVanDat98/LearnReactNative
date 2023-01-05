@@ -9,36 +9,33 @@
 import React from 'react';
 import style from './style/header';
 
-import {
-  StyleSheet
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomePage from './src/view/HomePage';
-import LoginPage from './src/view/LoginPage';
+import StepLogin from './src/step/StepLogin';
+import StepAfterLogin from './src/step/StepAfterLogin';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 const Stack = createNativeStackNavigator();
+
 const App = () => {
   return (
-    <NavigationContainer>
+    <Provider store={store}>
+  <NavigationContainer>
+      {/* Step Login */}
       <Stack.Navigator
-        initialRouteName="LoginPage"
+        initialRouteName="StepLogin"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="LoginPage" component={LoginPage} />
-        <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="StepLogin" component={StepLogin} />
+        <Stack.Screen name="StepAfterLogin" component={StepAfterLogin} />
       </Stack.Navigator>
     </NavigationContainer>
-    // <SafeAreaView style={{...backgroundStyle}}>
-    //     <StatusBar
-    //       hidden={false}
-    //       barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-    //       backgroundColor={backgroundStyle.backgroundColor}
-    //       />
 
-    //   </SafeAreaView>
+    </Provider>
   );
 };
 
