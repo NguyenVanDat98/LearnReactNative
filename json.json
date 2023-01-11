@@ -1,0 +1,10 @@
+const title =["name","address","phone"]
+const obj ={
+    name :"jons",
+    address:"24 abc",
+    phone :02020
+}
+
+
+
+obj[title[0]]

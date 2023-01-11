@@ -5,6 +5,7 @@ import {Alert, StyleSheet, Text, TextInput, View} from 'react-native';
 import style from '../../style/header';
 import styleLogin from '../../style/login/Index';
 import RootPage from './RootPage';
+import {firebase} from "../config/firebaseCfg"
 class validateForm {
   required = {
     message: 'This is required!',
@@ -50,17 +51,30 @@ export default function LoginPage({route, navigation}) {
     );
     Alert.alert('Warning!', message);
   };
-  const handleLogin = value => {
-    console.log(value);
-    // if (params) {
-    //   navigation.popToTop('StepAfterLogin', {
-    //     screen: params?.parentRoute || ' ',
-    //     params: {screen: params.params},
-    //   });
-    //   return;
-    // } else {
-    //   navigation.replace('StepAfterLogin');
-    // }
+  const handleLogin = async value => {
+    const  {email,password}= value
+try {
+  const login  = await firebase.auth().signInWithEmailAndPassword(email,password)
+  function loginSuccess (){
+    if (params) {
+      // console.log(true);
+      navigation.goBack('StepAfterLogin', {
+        screen: params?.parentRoute || ' ',
+        params: {screen: params.params},
+      });
+      return;
+    } else {
+      navigation.replace('StepAfterLogin');
+    }
+
+  }
+  login && loginSuccess()
+  
+} catch (error) {
+  Alert.alert("login fail!")
+}
+
+    
   };
   return (
     <RootPage>

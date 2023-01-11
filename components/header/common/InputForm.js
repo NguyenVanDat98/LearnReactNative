@@ -14,7 +14,7 @@ export default function InputForm({props, values, title, onChange,children}) {
         style={{...stylesForm.input,...styleIcon}}
         {...props}
         value={values}
-        onChange={onChange}
+        onChangeText={onChange}
       />
       {children}
     </View>

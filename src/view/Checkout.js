@@ -44,12 +44,12 @@ export default function Checkout() {
     defaultValues: {},
   });
   const onSubmit = data => console.log(dataProduct, 'data');
-  const validate = new Validate();
+  const validate = new Validate;
   return (
     <ScrollView style={{...style.container}}>
       <View style={{...styleCheckout.preView}}>
         <View style={{...styleCheckout.productPreView}}>
-          {keys.map((item, i) => (
+          {keys.map((item, i) => (dataProduct?.[item]!==0&&
             <ViewProduct key={i} title={item} value={dataProduct?.[item]} />
           ))}
           <ViewProduct title={"Total"} value={valuee}/>
@@ -73,7 +73,7 @@ export default function Checkout() {
                     title={e}
                   />
                 )}
-                name={e.toLocaleLowerCase()}
+                name={e.toLowerCase()}
               />
             );
           })}

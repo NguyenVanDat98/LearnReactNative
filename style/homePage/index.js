@@ -9,7 +9,6 @@ container :{
     image: {
         position:"absolute",
         width:"100%",
-        backgroundColor:"red",
         height:"100%"
     },
     option:{

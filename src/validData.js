@@ -27,4 +27,23 @@ export class Validate {
         message: 'Max lenght no more than 8',
       },
     };
+    password={
+      required: this.required,
+      minLength: {
+        message: 'Min lenght at least 8',
+        value: 9,
+      },
+      maxlenght: {
+        message: 'Max lenght no more than 8',
+      },
+    };
+    address ={
+     required: this.required,
+    };
+    telephone={
+      required: this.required,
+      pattern:{
+        message:"This is a not Number phone!",value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g
+       }
+    }
   }
